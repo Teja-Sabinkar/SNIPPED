@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- charcter set, website name, favicon, font style -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="recentlyviewed-page.css" type="text/css">
+    <link data-default-icon="favicon.ico" rel="shortcut icon" size="192x192" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c800e88a84.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+
+
+
+    <!-- HEADER SECTION -->
+
+
+
+    <div class="header-content">
+
+
+        <!-- Header Left-Section -->
+        <div class="header-left-section">
+            <button class="hamburger-menu" aria-label="Menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <a href="./home-page.html" class="youtube-logo">
+                <img src="/api/placeholder/100/50" alt="Logo">
+            </a>
+        </div>
+
+
+        <!-- Header Middle-Section -->
+        <div class="header-middle-section">
+
+            <div class="search-container">
+
+                <input type="text" class="search-box" placeholder="Search">
+                <button class="search-btn">
+                    <i class="fas fa-magnifying-glass icon"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Header Right-Section -->
+        <div class="header-right-section">
+
+
+
+
+            <button class="create-button">+</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Post</h2>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" id="thumbnail" accept="image/*">
+                            <div class="thumbnail-preview">
+                                <span>No image selected</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="playlist">Playlist (Optional)</label>
+                            <select id="playlist">
+                                <option value="">Select a playlist</option>
+                                <option value="1">My Playlist 1</option>
+                                <option value="2">My Playlist 2</option>
+                                <option value="3">My Playlist 3</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="create-post-btn">Create Post</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="notification-container">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-as-read" id="markAsRead">Mark all as read</button>
+                    </div>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>John Doe</strong> commented on your post
+                            </div>
+                            <div class="notification-time">2 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Jane Smith</strong> liked your photo
+                            </div>
+                            <div class="notification-time">4 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Admin</strong> posted a new announcement
+                            </div>
+                            <div class="notification-time">1 day ago</div>
+                        </li>
+                    </ul>
+                    <div class="see-all-container">
+                        <a href="./notification-page.html" class="see-all-button">See All Notifications</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="profile-container">
+
+
+                <div class="profile-icon">
+                    JD
+                </div>
+
+                <div class="dropdown-menu">
+                    <a href="./userprofile-page.html" class="droopdown-item">Account Profile</a>
+                    <a href="./settings-page.html" class="droopdown-item">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./settings-page.html" class="droopdown-item">
+                        Premium
+                        <span class="premium-badge">PRO</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./index.html" class="droopdown-item">Sign Out</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- SECTION-1 -->
+
+    <div class="section-1">
+
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+
+
+                <div class="sidebar-top">
+                    <li><a href="./home-page.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="./explore-page.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="./recentlyviewed-page.html"><i class="fas fa-history"></i> Recently Viewed</a></li>
+                    <li><a href="./subscriptions-page.html"><i class="fas fa-play-circle"></i> Subscriptions</a></li>
+                </div>
+
+
+                <div class="sidebar-bottom">
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a></li>
+                
+                </div>
+
+
+
+
+                <li><a href="./settings-page.html"><i class="fas fa-cog"></i> Settings</a></li>
+
+
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+
+
+    <!-- SECTION-2 -->
+    <div class="section-2">
+
+
+        <div class="container">
+            <h1>Recently Viewed</h1>
+            <div class="video-grid" id="videoGrid"></div>
+            <button class="show-more" id="showMore">Show More</button>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "NOTIFICATION DROP DOWN" option-->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationBell = document.querySelector('.notification-bell');
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const notificationCount = document.querySelector('.notification-count');
+            const markAsReadButton = document.querySelector('.mark-as-read');
+            const notificationItems = document.querySelectorAll('.notification-item');
+
+            let isDropdownVisible = false;
+
+            notificationBell.addEventListener('click', () => {
+                isDropdownVisible = !isDropdownVisible;
+                notificationDropdown.style.display = isDropdownVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = notificationBell.contains(event.target) || notificationDropdown.contains(event.target);
+                if (!isClickInside && isDropdownVisible) {
+                    notificationDropdown.style.display = 'none';
+                    isDropdownVisible = false;
+                }
+            });
+
+            markAsReadButton.addEventListener('click', () => {
+                notificationItems.forEach(item => {
+                    item.classList.remove('unread');
+                });
+                updateNotificationCount();
+            });
+
+            notificationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.remove('unread');
+                    updateNotificationCount();
+                });
+            });
+
+            function updateNotificationCount() {
+                const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                notificationCount.textContent = unreadCount;
+                notificationCount.style.display = unreadCount > 0 ? 'block' : 'none';
+            }
+
+            updateNotificationCount();
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "PROFILE DROP DOWN" option-->
+    <script>
+        const profileIcon = document.querySelector('.profile-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Toggle dropdown on click
+        profileIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Handle dropdown item clicks
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = e.target.textContent.trim();
+                console.log(`Clicked: ${action}`);
+                dropdownMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+
+
+
+
+    <!--Script for header "Recently viewed videos" option-->
+    <script>
+        // Sample video data (you can replace this with your actual data)
+        const videos = Array.from({ length: 24 }, (_, index) => ({
+            id: index + 1,
+            title: `Video Title ${index + 1}`,
+            views: Math.floor(Math.random() * 1000000),
+            timestamp: new Date(Date.now() - Math.random() * (1000 * 60 * 60 * 24 * 365 * 3)), // Random date within last 3 years
+            channel: `Channel ${index + 1}`,
+            verified: Math.random() > 0.5 // Randomly assign verified status
+        }));
+
+        const videoGrid = document.getElementById('videoGrid');
+        const showMoreBtn = document.getElementById('showMore');
+        let currentlyShown = 8; // Initial number of videos to show (2 rows x 4 columns)
+
+        // Function to format relative time
+        function getRelativeTime(date) {
+            const now = new Date();
+            const diffInSeconds = Math.floor((now - date) / 1000);
+            const diffInMinutes = Math.floor(diffInSeconds / 60);
+            const diffInHours = Math.floor(diffInMinutes / 60);
+            const diffInDays = Math.floor(diffInHours / 24);
+            const diffInMonths = Math.floor(diffInDays / 30);
+            const diffInYears = Math.floor(diffInDays / 365);
+
+            if (diffInYears > 0) {
+                return `${diffInYears} ${diffInYears === 1 ? 'year' : 'years'} ago`;
+            } else if (diffInMonths > 0) {
+                return `${diffInMonths} ${diffInMonths === 1 ? 'month' : 'months'} ago`;
+            } else if (diffInDays > 0) {
+                if (diffInDays >= 7) {
+                    const weeks = Math.floor(diffInDays / 7);
+                    return `${weeks} ${weeks === 1 ? 'week' : 'weeks'} ago`;
+                }
+                return `${diffInDays} ${diffInDays === 1 ? 'day' : 'days'} ago`;
+            } else if (diffInHours > 0) {
+                return `${diffInHours} ${diffInHours === 1 ? 'hour' : 'hours'} ago`;
+            } else if (diffInMinutes > 0) {
+                return `${diffInMinutes} ${diffInMinutes === 1 ? 'minute' : 'minutes'} ago`;
+            } else {
+                return 'Just now';
+            }
+        }
+
+        // Function to format view count
+        function formatViews(views) {
+            if (views >= 1000000) {
+                return `${(views / 1000000).toFixed(1)}M views`;
+            } else if (views >= 1000) {
+                return `${(views / 1000).toFixed(1)}K views`;
+            }
+            return `${views} views`;
+        }
+
+        // Function to create video element
+        function createVideoElement(video) {
+            const videoElement = document.createElement('div');
+            videoElement.className = 'video-container';
+            videoElement.innerHTML = `
+            <div class="thumbnail">
+                <img src="/api/placeholder/300/169" alt="Video thumbnail">
+            </div>
+            <div class="video-info">
+                <div class="video-title">${video.title}</div>
+                <div class="channel-name">
+                    ${video.channel}
+                    ${video.verified ? `
+                    <span class="verified-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>` : ''}
+                </div>
+                <div class="video-meta">
+                    ${formatViews(video.views)} • ${getRelativeTime(video.timestamp)}
+                </div>
+            </div>
+        `;
+            return videoElement;
+        }
+
+        // Function to display videos
+        function displayVideos(start, end) {
+            const videosToShow = videos.slice(start, end);
+            videosToShow.forEach(video => {
+                videoGrid.appendChild(createVideoElement(video));
+            });
+        }
+
+        // Initial display
+        displayVideos(0, currentlyShown);
+
+        // Show more button click handler
+        showMoreBtn.addEventListener('click', () => {
+            const nextBatch = currentlyShown + 8; // Show next 8 videos (2 rows)
+            displayVideos(currentlyShown, nextBatch);
+            currentlyShown = nextBatch;
+
+            // Hide show more button if all videos are displayed
+            if (currentlyShown >= videos.length) {
+                showMoreBtn.classList.add('hidden');
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Script for "RESPONSIVE DESIGN"-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all necessary elements
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const section1 = document.querySelector('.section-1');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const searchIcon = document.querySelector('.search-icon');
+
+        const backButton = document.querySelector('.back-button');
+        const headerContent = document.querySelector('.header-content');
+
+        // Hamburger menu toggle
+        hamburgerMenu.addEventListener('click', function () {
+            this.classList.toggle('active');
+            section1.classList.toggle('expanded');
+            sidebarOverlay.classList.toggle('active');
+
+            // Prevent body scrolling when sidebar is open
+            if (section1.classList.contains('expanded')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close sidebar when clicking overlay
+        sidebarOverlay.addEventListener('click', function () {
+            hamburgerMenu.classList.remove('active');
+            section1.classList.remove('expanded');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+
+
+
+
+        // Handle window resize
+        let timeout = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                if (window.innerWidth > 768) {
+                    // Reset all states when returning to desktop view
+                    section1.classList.remove('expanded');
+                    hamburgerMenu.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+
+                    document.body.style.overflow = '';
+                    Array.from(headerContent.children).forEach(el => {
+                        el.style.visibility = 'visible';
+                    });
+                }
+            }, 250);
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

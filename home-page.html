@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- charcter set, website name, favicon, font style -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="home-page.css" type="text/css">
+    <link data-default-icon="favicon.ico" rel="shortcut icon" size="192x192" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c800e88a84.js" crossorigin="anonymous"></script>
+    <!--   script src="./home-page.js"></script>   -->
+</head>
+
+
+
+<body>
+
+
+
+    <!-- HEADER SECTION -->
+
+
+
+    <div class="header-content">
+
+
+        <!-- Header Left-Section -->
+        <div class="header-left-section">
+            <button class="hamburger-menu" aria-label="Menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <a href="./home-page.html" class="youtube-logo">
+                <img src="/api/placeholder/100/50" alt="Logo">
+            </a>
+        </div>
+
+
+        <!-- Header Middle-Section -->
+        <div class="header-middle-section">
+
+            <div class="search-container">
+
+                <input type="text" class="search-box" placeholder="Search">
+                <button class="search-btn">
+                    <i class="fas fa-magnifying-glass icon"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Header Right-Section -->
+        <div class="header-right-section">
+
+
+
+
+            <button class="create-button">+</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Post</h2>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" id="thumbnail" accept="image/*">
+                            <div class="thumbnail-preview">
+                                <span>No image selected</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="playlist">Playlist (Optional)</label>
+                            <select id="playlist">
+                                <option value="">Select a playlist</option>
+                                <option value="1">My Playlist 1</option>
+                                <option value="2">My Playlist 2</option>
+                                <option value="3">My Playlist 3</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="create-post-btn">Create Post</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="notification-container">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-as-read" id="markAsRead">Mark all as read</button>
+                    </div>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>John Doe</strong> commented on your post
+                            </div>
+                            <div class="notification-time">2 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Jane Smith</strong> liked your photo
+                            </div>
+                            <div class="notification-time">4 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Admin</strong> posted a new announcement
+                            </div>
+                            <div class="notification-time">1 day ago</div>
+                        </li>
+                    </ul>
+                    <div class="see-all-container">
+                        <a href="./notification-page.html" class="see-all-button">See All Notifications</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="profile-container">
+
+
+                <div class="profile-icon">
+                    JD
+                </div>
+
+                <div class="dropdown-menu">
+                    <a href="./userprofile-page.html" class="droopdown-item">Account Profile</a>
+                    <a href="./settings-page.html" class="droopdown-item">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./settings-page.html" class="droopdown-item">
+                        Premium
+                        <span class="premium-badge">PRO</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./index.html" class="droopdown-item">Sign Out</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- SECTION-1 -->
+
+    <div class="section-1">
+    
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+    
+    
+                <div class="sidebar-top">
+                    <li><a href="./home-page.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="./explore-page.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="./recentlyviewed-page.html"><i class="fas fa-history"></i> Recently Viewed</a></li>
+                    <li><a href="./subscriptions-page.html"><i class="fas fa-play-circle"></i> Subscriptions</a></li>
+                </div>
+    
+                <div class="sidebar-bottom">
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a></li>
+    
+                </div>
+    
+    
+    
+    
+                <li><a href="./settings-page.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    
+    
+    <div class="sidebar-overlay"></div>
+    
+    
+    </div>
+
+
+
+
+
+    <!-- SECTION-2 -->
+    <div class="section-2">
+
+
+
+
+        <div class="feed-container">
+            <div class="post">
+                <div class="kebab-menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <div class="dropdown">
+                        <a href="#" class="save-option">Save</a>
+                        <a href="#" class="hide-option">Hide</a>
+                        <a href="#" class="report-option">Report</a>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
+                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                    </div>
+                    <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
+                        ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
+                    <p class="post-description">Scientists explain that honey's unique chemical composition - low
+                        moisture content and high acidity - creates an environment where bacteria and other
+                        microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
+                            class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <a href="discussions.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="far fa-comment"></i> 32.6K Discussions
+                            </button>
+                        </a>
+                        <a href="share.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="kebab-menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <div class="dropdown">
+                        <a href="#" class="save-option">Save</a>
+                        <a href="#" class="hide-option">Hide</a>
+                        <a href="#" class="report-option">Report</a>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
+                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                    </div>
+                    <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
+                        ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
+                    <p class="post-description">Scientists explain that honey's unique chemical composition - low
+                        moisture content and high acidity - creates an environment where bacteria and other
+                        microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
+                            class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <a href="discussions.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="far fa-comment"></i> 32.6K Discussions
+                            </button>
+                        </a>
+                        <a href="share.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="kebab-menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <div class="dropdown">
+                        <a href="#" class="save-option">Save</a>
+                        <a href="#" class="hide-option">Hide</a>
+                        <a href="#" class="report-option">Report</a>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
+                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                    </div>
+                    <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
+                        ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
+                    <p class="post-description">Scientists explain that honey's unique chemical composition - low
+                        moisture content and high acidity - creates an environment where bacteria and other
+                        microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
+                            class="post-image">
+                    </div>
+                    <div class="post-actions">
+                        <a href="discussions.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="far fa-comment"></i> 32.6K Discussions
+                            </button>
+                        </a>
+                        <a href="share.html" style="text-decoration: none; margin-right: 10px;">
+                            <button style="cursor: pointer;">
+                                <i class="fas fa-share"></i> Share
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Section-3 -->
+    <div class="section-3">
+        <h3>Recently Viewed</h3>
+
+
+
+        <div class="section-3-1">
+
+
+
+
+            <a href="./discussion-page.html" class="RecentlyViewed-video-container">
+                <div class="thumbnail">
+                    <img src="/placeholder.svg?height=9.4&width=16.8" alt="Video thumbnail">
+                </div>
+                <div class="video-info-container">
+                    <div class="video-info">
+                        <h2 class="video-title">How Brands Use Design & Marketing to Control Your Mind</h2>
+                        <div class="video-meta">
+                            <div class="channel-info">
+                                <span>Design Theory</span>
+                                <svg class="verified-badge" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                                    <path
+                                        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1L7 11.8l2.8 2.7L17 7.4l1.4 1.4-8.6 8.5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="meta-separator">•</span>
+                            <span>2.5M views</span>
+                            <span class="meta-separator">•</span>
+                            <span>1 year ago</span>
+                        </div>
+                    </div>
+                    <div class="menu-button-wrapper" onclick="event.preventDefault();">
+                        <button class="menu-button" aria-label="More actions">
+                            <svg class="menu-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </a>
+
+
+
+            <a href="./discussion-page.html" class="RecentlyViewed-video-container">
+                <div class="thumbnail">
+                    <img src="/placeholder.svg?height=9.4&width=16.8" alt="Video thumbnail">
+                </div>
+                <div class="video-info-container">
+                    <div class="video-info">
+                        <h2 class="video-title">How Brands Use Design & Marketing to Control Your Mind</h2>
+                        <div class="video-meta">
+                            <div class="channel-info">
+                                <span>Design Theory</span>
+                                <svg class="verified-badge" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                                    <path
+                                        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1L7 11.8l2.8 2.7L17 7.4l1.4 1.4-8.6 8.5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="meta-separator">•</span>
+                            <span>2.5M views</span>
+                            <span class="meta-separator">•</span>
+                            <span>1 year ago</span>
+                        </div>
+                    </div>
+                    <div class="menu-button-wrapper" onclick="event.preventDefault();">
+                        <button class="menu-button" aria-label="More actions">
+                            <svg class="menu-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </a>
+
+
+
+            <a href="./discussion-page.html" class="RecentlyViewed-video-container">
+                <div class="thumbnail">
+                    <img src="/placeholder.svg?height=9.4&width=16.8" alt="Video thumbnail">
+                </div>
+                <div class="video-info-container">
+                    <div class="video-info">
+                        <h2 class="video-title">How Brands Use Design & Marketing to Control Your Mind</h2>
+                        <div class="video-meta">
+                            <div class="channel-info">
+                                <span>Design Theory</span>
+                                <svg class="verified-badge" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                                    <path
+                                        d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1L7 11.8l2.8 2.7L17 7.4l1.4 1.4-8.6 8.5z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span class="meta-separator">•</span>
+                            <span>2.5M views</span>
+                            <span class="meta-separator">•</span>
+                            <span>1 year ago</span>
+                        </div>
+                    </div>
+                    <div class="menu-button-wrapper" onclick="event.preventDefault();">
+                        <button class="menu-button" aria-label="More actions">
+                            <svg class="menu-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </a>
+
+            <button class="show-more-RecentlyViewed">Show more</button>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "CREATE BUTTON" option-->
+    <script>
+        const createButton = document.querySelector('.create-button');
+        const modal = document.querySelector('.modal');
+        const closeBtn = document.querySelector('.close');
+        const form = document.getElementById('createPostForm');
+        const thumbnailInput = document.getElementById('thumbnail');
+        const thumbnailPreview = document.querySelector('.thumbnail-preview');
+        const feedContainer = document.querySelector('.feed-container');
+
+        // Open modal
+        createButton.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Handle thumbnail preview
+        thumbnailInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    thumbnailPreview.style.backgroundImage = `url(${e.target.result})`;
+                    thumbnailPreview.innerHTML = '';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const thumbnailFile = thumbnailInput.files[0];
+
+            // Create image container HTML only if an image is selected
+            let imageContainerHtml = '';
+            if (thumbnailFile) {
+                const thumbnailUrl = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsDataURL(thumbnailFile);
+                });
+                imageContainerHtml = `
+                    <div class="image-container">
+                        <img src="${thumbnailUrl}" alt="Post thumbnail" class="post-image">
+                    </div>
+                `;
+            }
+
+            const newPost = `
+                <div class="post">
+                    <div class="kebab-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                        <div class="dropdown">
+                            <a href="#" class="save-option">Save</a>
+                            <a href="#" class="hide-option">Hide</a>
+                            <a href="#" class="report-option">Report</a>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
+                            <p>Posted by <a href="#" class="user">u/user123</a> just now</p>
+                        </div>
+                        <h2 class="post-title">${title}</h2>
+                        <p class="post-description">${description}</p>
+                        ${imageContainerHtml}
+                        <div class="post-actions">
+                            <a href="#" style="text-decoration: none; margin-right: 10px;">
+                                <button style="cursor: pointer;">
+                                    <i class="far fa-comment"></i> 0 Discussions
+                                </button>
+                            </a>
+                            <a href="#" style="text-decoration: none; margin-right: 10px;">
+                                <button style="cursor: pointer;">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Add the new post to the beginning of the feed
+            feedContainer.insertAdjacentHTML('afterbegin', newPost);
+
+            // Clear form and close modal
+            form.reset();
+            thumbnailPreview.style.backgroundImage = '';
+            thumbnailPreview.innerHTML = '<span>No image selected</span>';
+            modal.style.display = 'none';
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "NOTIFICATION DROP DOWN" option-->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationBell = document.querySelector('.notification-bell');
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const notificationCount = document.querySelector('.notification-count');
+            const markAsReadButton = document.querySelector('.mark-as-read');
+            const notificationItems = document.querySelectorAll('.notification-item');
+
+            let isDropdownVisible = false;
+
+            notificationBell.addEventListener('click', () => {
+                isDropdownVisible = !isDropdownVisible;
+                notificationDropdown.style.display = isDropdownVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = notificationBell.contains(event.target) || notificationDropdown.contains(event.target);
+                if (!isClickInside && isDropdownVisible) {
+                    notificationDropdown.style.display = 'none';
+                    isDropdownVisible = false;
+                }
+            });
+
+            markAsReadButton.addEventListener('click', () => {
+                notificationItems.forEach(item => {
+                    item.classList.remove('unread');
+                });
+                updateNotificationCount();
+            });
+
+            notificationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.remove('unread');
+                    updateNotificationCount();
+                });
+            });
+
+            function updateNotificationCount() {
+                const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                notificationCount.textContent = unreadCount;
+                notificationCount.style.display = unreadCount > 0 ? 'block' : 'none';
+            }
+
+            updateNotificationCount();
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "PROFILE DROP DOWN" option-->
+    <script>
+        const profileIcon = document.querySelector('.profile-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Toggle dropdown on click
+        profileIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Handle dropdown item clicks
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = e.target.textContent.trim();
+                console.log(`Clicked: ${action}`);
+                dropdownMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <!--Script for "KEBAB MENU" option in post-->
+    <script>
+        document.addEventListener('click', function (event) {
+            if (event.target.closest('.kebab-menu')) {
+                const dropdown = event.target.closest('.kebab-menu').querySelector('.dropdown');
+                dropdown.classList.toggle('show');
+            } else {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+            }
+        });
+
+        document.querySelectorAll('.save-option, .hide-option, .report-option').forEach(option => {
+            option.addEventListener('click', function (event) {
+                event.preventDefault();
+                alert(`You clicked: ${this.textContent}`);
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for "show-more-RecentlyViewed" button in RecentlyViewed-->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create additional RecentlyViewed items programmatically
+            const section31 = document.querySelector('.section-3-1');
+            const showMoreButton = document.querySelector('.show-more-RecentlyViewed');
+            let isExpanded = false;
+
+            // Function to create a new RecentlyViewed item
+            function createRecentlyViewedItem(index) {
+                const container = document.createElement('div');
+                container.className = 'RecentlyViewed-video-container hidden additional-RecentlyViewed';
+
+                container.innerHTML = `
+            <div class="thumbnail">
+                <img src="/placeholder.svg?height=9.4&width=16.8" alt="Video thumbnail">
+            </div>
+            <div class="video-info-container">
+                <div class="video-info">
+                    <h2 class="video-title">Additional Video RecentlyViewed ${index}</h2>
+                    <div class="video-meta">
+                        <div class="channel-info">
+                            <span>Channel ${index}</span>
+                            <svg class="verified-badge" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1L7 11.8l2.8 2.7L17 7.4l1.4 1.4-8.6 8.5z"></path>
+                            </svg>
+                        </div>
+                        <span class="meta-separator">•</span>
+                        <span>${Math.floor(Math.random() * 1000)}K views</span>
+                        <span class="meta-separator">•</span>
+                        <span>${Math.floor(Math.random() * 11) + 1} months ago</span>
+                    </div>
+                </div>
+                <button class="menu-button" aria-label="More actions">
+                    <svg class="menu-icon" viewBox="0 0 24 24">
+                        <path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+                    </svg>
+                </button>
+            </div>
+        `;
+
+                return container;
+            }
+
+            // Add 6 hidden RecentlyViewed items
+            for (let i = 1; i <= 6; i++) {
+                const newItem = createRecentlyViewedItem(i);
+                // Insert the new item before the show more button
+                section31.insertBefore(newItem, showMoreButton);
+            }
+
+            // Handle show more/less functionality
+            showMoreButton.addEventListener('click', function () {
+                const hiddenItems = document.querySelectorAll('.additional-RecentlyViewed');
+                isExpanded = !isExpanded;
+
+                hiddenItems.forEach((item) => {
+                    if (isExpanded) {
+                        item.classList.remove('hidden'); // Show the item
+                        showMoreButton.textContent = 'Show less';
+                    } else {
+                        item.classList.add('hidden'); // Hide the item
+                        showMoreButton.textContent = 'Show more';
+                    }
+                });
+            });
+
+            // Add hover effect for all RecentlyViewed items
+            document.addEventListener('mouseover', function (e) {
+                const RecentlyViewedItem = e.target.closest('.RecentlyViewed-video-container');
+                if (RecentlyViewedItem) {
+                    RecentlyViewedItem.style.transform = 'translateY(-2px)';
+                    RecentlyViewedItem.style.backgroundColor = 'var(--secondary-hover)';
+                }
+            });
+
+            document.addEventListener('mouseout', function (e) {
+                const RecentlyViewedItem = e.target.closest('.RecentlyViewed-video-container');
+                if (RecentlyViewedItem) {
+                    RecentlyViewedItem.style.transform = 'translateY(0)';
+                    RecentlyViewedItem.style.backgroundColor = 'var(--secondary)';
+                }
+            });
+
+            // Handle menu button clicks
+            document.addEventListener('click', function (e) {
+                const menuButton = e.target.closest('.menu-button');
+                if (menuButton) {
+                    // Add your menu functionality here
+                    console.log('Menu clicked for:', menuButton.closest('.RecentlyViewed-video-container').querySelector('.video-title').textContent);
+                }
+            });
+        });
+
+
+
+    </script>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    <!--Script for "RESPONSIVE DESIGN"-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all necessary elements
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const section1 = document.querySelector('.section-1');
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            const searchIcon = document.querySelector('.search-icon');
+
+            const backButton = document.querySelector('.back-button');
+            const headerContent = document.querySelector('.header-content');
+
+            // Hamburger menu toggle
+            hamburgerMenu.addEventListener('click', function () {
+                this.classList.toggle('active');
+                section1.classList.toggle('expanded');
+                sidebarOverlay.classList.toggle('active');
+
+                // Prevent body scrolling when sidebar is open
+                if (section1.classList.contains('expanded')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close sidebar when clicking overlay
+            sidebarOverlay.addEventListener('click', function () {
+                hamburgerMenu.classList.remove('active');
+                section1.classList.remove('expanded');
+                sidebarOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+
+
+
+
+            // Handle window resize
+            let timeout = null;
+            window.addEventListener('resize', function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    if (window.innerWidth > 768) {
+                        // Reset all states when returning to desktop view
+                        section1.classList.remove('expanded');
+                        hamburgerMenu.classList.remove('active');
+                        sidebarOverlay.classList.remove('active');
+
+                        document.body.style.overflow = '';
+                        Array.from(headerContent.children).forEach(el => {
+                            el.style.visibility = 'visible';
+                        });
+                    }
+                }, 250);
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

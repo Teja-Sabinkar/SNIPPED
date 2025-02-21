@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- charcter set, website name, favicon, font style -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="settings-page.css" type="text/css">
+    <link data-default-icon="favicon.ico" rel="shortcut icon" size="192x192" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c800e88a84.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+
+
+
+    <!-- HEADER SECTION -->
+
+
+
+    <div class="header-content">
+
+
+
+        <!-- Header Left-Section -->
+        <div class="header-left-section">
+            <button class="hamburger-menu" aria-label="Menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <a href="./home-page.html" class="youtube-logo">
+                <img src="/api/placeholder/100/50" alt="Logo">
+            </a>
+        </div>
+
+
+        <!-- Header Middle-Section -->
+        <div class="header-middle-section">
+
+            <div class="search-container">
+
+                <input type="text" class="search-box" placeholder="Search">
+                <button class="search-btn">
+                    <i class="fas fa-magnifying-glass icon"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Header Right-Section -->
+        <div class="header-right-section">
+
+
+
+
+            <button class="create-button">+</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Post</h2>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" id="thumbnail" accept="image/*">
+                            <div class="thumbnail-preview">
+                                <span>No image selected</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="playlist">Playlist (Optional)</label>
+                            <select id="playlist">
+                                <option value="">Select a playlist</option>
+                                <option value="1">My Playlist 1</option>
+                                <option value="2">My Playlist 2</option>
+                                <option value="3">My Playlist 3</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="create-post-btn">Create Post</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="notification-container">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-as-read" id="markAsRead">Mark all as read</button>
+                    </div>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>John Doe</strong> commented on your post
+                            </div>
+                            <div class="notification-time">2 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Jane Smith</strong> liked your photo
+                            </div>
+                            <div class="notification-time">4 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Admin</strong> posted a new announcement
+                            </div>
+                            <div class="notification-time">1 day ago</div>
+                        </li>
+                    </ul>
+                    <div class="see-all-container">
+                        <a href="./notification-page.html" class="see-all-button">See All Notifications</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="profile-container">
+
+
+                <div class="profile-icon">
+                    JD
+                </div>
+
+                <div class="dropdown-menu">
+                    <a href="./userprofile-page.html" class="droopdown-item">Account Profile</a>
+                    <a href="./settings-page.html" class="droopdown-item">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./settings-page.html" class="droopdown-item">
+                        Premium
+                        <span class="premium-badge">PRO</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./index.html" class="droopdown-item">Sign Out</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- SECTION-1 -->
+
+    <div class="section-1">
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <div class="sidebar-heading">Settings</div>
+
+
+                <div class="sidebar-top">
+                    <li>
+                        <a href="#" class="active" data-section="account">
+                            <i class="fas fa-user menu-icon"></i>
+                            Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="notification">
+                            <i class="fas fa-bell menu-icon"></i>
+                            Notification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="privacy">
+                            <i class="fas fa-shield-alt menu-icon"></i>
+                            Privacy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="feedback">
+                            <i class="fas fa-comment menu-icon"></i>
+                            Feedback
+                        </a>
+                    </li>
+                </div>
+
+
+
+
+            </ul>
+        </nav>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="section-2">
+        <div id="account" class="content-section active">
+            <div class="content-group">
+                <h2>Account Settings</h2>
+                <div class="content-item">Email Address</div>
+                <div class="content-item">Contact Info</div>
+                <div class="content-item">2 Factor Authorization</div>
+                <div class="content-item">Language</div>
+            </div>
+            <div class="content-group">
+                <h2>Subscription</h2>
+                <div class="content-item">
+                    Get Premium
+                    <div class="circular-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="content-group">
+                <h2>Advanced</h2>
+                <div class="content-item">
+                    Clear History
+                    <div class="circular-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="content-item">
+                    Account Deletion
+                    <div class="circular-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="notification" class="content-section">
+            <div class="content-group">
+                <h2>General</h2>
+                <div class="content-item">
+                    Community Notifications
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Push Notifications
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Messages
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="content-group">
+                <h2>Activity</h2>
+                <div class="content-item">
+                    Mentions
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Activity on your post
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    New Followers
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Subscriptions
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Reactions on your post
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Announcements
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Premium Updates
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div id="privacy" class="content-section">
+            <div class="content-group">
+                <h2>Social Interactions</h2>
+                <div class="content-item">
+                    Allow people to follow you
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="content-item">
+                    Blocked accounts
+                    <div class="circular-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M9.29 6.71a.996.996 0 0 0 0 1.41L13.17 12l-3.88 3.88a.996.996 0 1 0 1.41 1.41l4.59-4.59a.996.996 0 0 0 0-1.41L10.7 6.7c-.38-.38-1.02-.38-1.41.01z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="content-item">
+                    Show your account in search results
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="content-group">
+                <h2>ADS Personalization</h2>
+                <div class="content-item">
+                    Personalize your ADS
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="feedback">
+            <div class="content-group">
+                <h2>Feedback</h2>
+            <div class="video-feedback-container">
+                <form class="feedback-form">
+                    <div class="form-group">
+                        <label for="feedback-title">Title</label>
+                        <input type="text" id="feedback-title" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback-description">Description</label>
+                        <textarea id="feedback-description" class="form-input" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file-upload">Attach files</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="file-upload" multiple class="file-input">
+                            <button type="button" class="file-upload-btn">
+                                <svg viewBox="0 0 24 24" class="upload-icon">
+                                    <path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/>
+                                </svg>
+                                Choose files
+                            </button>
+                            <div class="file-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="email-updates">
+                            <span class="checkbox-text">We may email you for more information or updates</span>
+                        </label>
+                    </div>
+
+                    <div class="legal-text">
+                        Some account and system information may be sent to Google. We will use it to fix problems and improve our services, subject to our Privacy Policy and Terms of Service. We may email you for more information or updates. Go to Legal Help to ask for content changes for legal reasons.
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Submit feedback</button>
+                    </div>
+                </form>
+            </div>
+
+            </div>
+            
+        </div>
+
+        
+
+
+        
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "NOTIFICATION DROP DOWN" option-->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationBell = document.querySelector('.notification-bell');
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const notificationCount = document.querySelector('.notification-count');
+            const markAsReadButton = document.querySelector('.mark-as-read');
+            const notificationItems = document.querySelectorAll('.notification-item');
+
+            let isDropdownVisible = false;
+
+            notificationBell.addEventListener('click', () => {
+                isDropdownVisible = !isDropdownVisible;
+                notificationDropdown.style.display = isDropdownVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = notificationBell.contains(event.target) || notificationDropdown.contains(event.target);
+                if (!isClickInside && isDropdownVisible) {
+                    notificationDropdown.style.display = 'none';
+                    isDropdownVisible = false;
+                }
+            });
+
+            markAsReadButton.addEventListener('click', () => {
+                notificationItems.forEach(item => {
+                    item.classList.remove('unread');
+                });
+                updateNotificationCount();
+            });
+
+            notificationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.remove('unread');
+                    updateNotificationCount();
+                });
+            });
+
+            function updateNotificationCount() {
+                const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                notificationCount.textContent = unreadCount;
+                notificationCount.style.display = unreadCount > 0 ? 'block' : 'none';
+            }
+
+            updateNotificationCount();
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "PROFILE DROP DOWN" option-->
+    <script>
+        const profileIcon = document.querySelector('.profile-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Toggle dropdown on click
+        profileIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Handle dropdown item clicks
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = e.target.textContent.trim();
+                console.log(`Clicked: ${action}`);
+                dropdownMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+
+
+
+
+    <!--Script for "Channel Profile"-->
+    <script>
+        function toggleSubscribe() {
+            const button = document.querySelector('.subscribe-button');
+            if (button.classList.contains('subscribed')) {
+                button.textContent = 'Subscribe';
+                button.classList.remove('subscribed');
+            } else {
+                button.textContent = 'Subscribed';
+                button.classList.add('subscribed');
+            }
+        }
+
+        // Description show more functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const descriptionText = document.querySelector('.description-text');
+            const showMoreBtn = document.querySelector('.show-more-btn');
+            const gradient = document.querySelector('.description-gradient');
+
+            // Check if description needs show more button
+            function checkDescription() {
+                const scrollHeight = descriptionText.scrollHeight;
+                if (scrollHeight > 40) { // 40px is our max-height for collapsed state
+                    showMoreBtn.style.display = 'block';
+                    if (!descriptionText.classList.contains('expanded')) {
+                        gradient.style.opacity = '1';
+                    }
+                } else {
+                    showMoreBtn.style.display = 'none';
+                    gradient.style.opacity = '0';
+                }
+            }
+
+            // Toggle description expansion
+            showMoreBtn.addEventListener('click', function () {
+                const isExpanded = descriptionText.classList.contains('expanded');
+                if (isExpanded) {
+                    // Collapsing
+                    descriptionText.style.maxHeight = descriptionText.scrollHeight + 'px';
+                    // Force reflow
+                    descriptionText.offsetHeight;
+                    descriptionText.classList.remove('expanded');
+                    descriptionText.style.maxHeight = '40px';
+                    gradient.style.opacity = '1';
+                    showMoreBtn.textContent = 'Show more';
+
+                    // Reset maxHeight after transition
+                    setTimeout(() => {
+                        descriptionText.style.maxHeight = '';
+                    }, 300);
+                } else {
+                    // Expanding
+                    descriptionText.classList.add('expanded');
+                    descriptionText.style.maxHeight = descriptionText.scrollHeight + 'px';
+                    gradient.style.opacity = '0';
+                    showMoreBtn.textContent = 'Show less';
+                }
+            });
+
+            // Initial check
+            checkDescription();
+
+            // Check on window resize
+            window.addEventListener('resize', checkDescription);
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <!--Script for "Settings Tabs"-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add toggle switch functionality
+            const toggleSwitches = document.querySelectorAll('.switch input');
+
+            // Add click handler for blocked accounts arrow
+            const arrowButtons = document.querySelectorAll('.circular-arrow');
+            arrowButtons.forEach(arrow => {
+                arrow.addEventListener('click', function () {
+                    const sectionName = this.parentElement.textContent.trim();
+                    console.log(`Navigating to ${sectionName} section`);
+                    // Add navigation logic here
+                });
+            });
+            toggleSwitches.forEach(toggle => {
+                toggle.addEventListener('change', function () {
+                    const notificationName = this.parentElement.parentElement.textContent.trim();
+                    console.log(`${notificationName} is now ${this.checked ? 'enabled' : 'disabled'}`);
+                });
+            });
+            const menuLinks = document.querySelectorAll('.sidebar-menu a');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Remove active class from all links and sections
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    contentSections.forEach(s => s.classList.remove('active'));
+
+                    // Add active class to clicked link
+                    this.classList.add('active');
+
+                    // Show corresponding content section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for "Feedback modal"-->
+    <script>
+        // YouTube-style feedback functionality and Main menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeBtn = document.getElementById('likeBtn');
+            const dislikeBtn = document.getElementById('dislikeBtn');
+            const commentInput = document.querySelector('.comment-input');
+            const commentBtn = document.querySelector('.comment-btn');
+            const cancelBtn = document.querySelector('.cancel-btn');
+            let likeCount = 0;
+            let isLiked = false;
+            let isDisliked = false;
+
+            const menuLinks = document.querySelectorAll('.sidebar-menu a');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Remove active class from all links and content sections
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    contentSections.forEach(section => section.classList.remove('active'));
+
+                    // Add active class to clicked link
+                    link.classList.add('active');
+
+                    // Show corresponding content section
+                    const sectionId = link.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Script for "RESPONSIVE DESIGN"-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all necessary elements
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const section1 = document.querySelector('.section-1');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const searchIcon = document.querySelector('.search-icon');
+
+        const backButton = document.querySelector('.back-button');
+        const headerContent = document.querySelector('.header-content');
+
+        // Hamburger menu toggle
+        hamburgerMenu.addEventListener('click', function () {
+            this.classList.toggle('active');
+            section1.classList.toggle('expanded');
+            sidebarOverlay.classList.toggle('active');
+
+            // Prevent body scrolling when sidebar is open
+            if (section1.classList.contains('expanded')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close sidebar when clicking overlay
+        sidebarOverlay.addEventListener('click', function () {
+            hamburgerMenu.classList.remove('active');
+            section1.classList.remove('expanded');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+
+
+
+
+        // Handle window resize
+        let timeout = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                if (window.innerWidth > 768) {
+                    // Reset all states when returning to desktop view
+                    section1.classList.remove('expanded');
+                    hamburgerMenu.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+
+                    document.body.style.overflow = '';
+                    Array.from(headerContent.children).forEach(el => {
+                        el.style.visibility = 'visible';
+                    });
+                }
+            }, 250);
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <!-- charcter set, website name, favicon, font style -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Name</title>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="explore-page.css" type="text/css">
+    <link data-default-icon="favicon.ico" rel="shortcut icon" size="192x192" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c800e88a84.js" crossorigin="anonymous"></script>
+</head>
+
+
+
+<body>
+
+
+
+    <!-- HEADER SECTION -->
+
+
+
+    <div class="header-content">
+
+
+        <!-- Header Left-Section -->
+        <div class="header-left-section">
+            <button class="hamburger-menu" aria-label="Menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+            <a href="./home-page.html" class="youtube-logo">
+                <img src="/api/placeholder/100/50" alt="Logo">
+            </a>
+        </div>
+
+
+        <!-- Header Middle-Section -->
+        <div class="header-middle-section">
+
+            <div class="search-container">
+
+                <input type="text" class="search-box" placeholder="Search">
+                <button class="search-btn">
+                    <i class="fas fa-magnifying-glass icon"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Header Right-Section -->
+        <div class="header-right-section">
+
+
+
+
+            <button class="create-button">+</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Post</h2>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" id="thumbnail" accept="image/*">
+                            <div class="thumbnail-preview">
+                                <span>No image selected</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="playlist">Playlist (Optional)</label>
+                            <select id="playlist">
+                                <option value="">Select a playlist</option>
+                                <option value="1">My Playlist 1</option>
+                                <option value="2">My Playlist 2</option>
+                                <option value="3">My Playlist 3</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="create-post-btn">Create Post</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="notification-container">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="notification-dropdown" id="notificationDropdown">
+                    <div class="notification-header">
+                        <h3>Notifications</h3>
+                        <button class="mark-as-read" id="markAsRead">Mark all as read</button>
+                    </div>
+                    <ul class="notification-list">
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>John Doe</strong> commented on your post
+                            </div>
+                            <div class="notification-time">2 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Jane Smith</strong> liked your photo
+                            </div>
+                            <div class="notification-time">4 hours ago</div>
+                        </li>
+                        <li class="notification-item unread">
+                            <div class="notification-content">
+                                <strong>Admin</strong> posted a new announcement
+                            </div>
+                            <div class="notification-time">1 day ago</div>
+                        </li>
+                    </ul>
+                    <div class="see-all-container">
+                        <a href="./notification-page.html" class="see-all-button">See All Notifications</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="profile-container">
+
+
+                <div class="profile-icon">
+                    JD
+                </div>
+
+                <div class="dropdown-menu">
+                    <a href="./userprofile-page.html" class="droopdown-item">Account Profile</a>
+                    <a href="./settings-page.html" class="droopdown-item">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./settings-page.html" class="droopdown-item">
+                        Premium
+                        <span class="premium-badge">PRO</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="./index.html" class="droopdown-item">Sign Out</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- SECTION-1 -->
+
+    <div class="section-1">
+
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+
+
+                <div class="sidebar-top">
+                    <li><a href="./home-page.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="./explore-page.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="./recentlyviewed-page.html"><i class="fas fa-history"></i> Recently Viewed</a></li>
+                    <li><a href="./subscriptions-page.html"><i class="fas fa-play-circle"></i> Subscriptions</a></li>
+                </div>
+
+
+                <div class="sidebar-bottom">
+                    <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a></li>
+                
+                </div>
+
+
+
+
+                <li><a href="./settings-page.html"><i class="fas fa-cog"></i> Settings</a></li>
+
+
+            </ul>
+        </nav>
+
+
+    </div>
+
+
+
+
+
+    <!-- SECTION-2 -->
+    <div class="section-2">
+        <h2 class="section-title">Explore</h2>
+
+
+
+        <div class="explore-grid">
+
+            <!-- All category sections -->
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container trending">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <span class="item-title">Trending</span>
+                    <span class="item-description">See what's trending</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="trending-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container music">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <span class="item-title">Music</span>
+                    <span class="item-description">Latest hits and classics</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="music-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container gaming">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <span class="item-title">Gaming</span>
+                    <span class="item-description">Live streams and walkthroughs</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="gaming-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container movies">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <span class="item-title">Movies</span>
+                    <span class="item-description">Trailers and reviews</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="movies-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container news">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <span class="item-title">News</span>
+                    <span class="item-description">Breaking news and updates</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="news-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container sports">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <span class="item-title">Sports</span>
+                    <span class="item-description">Highlights and live events</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="sports-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container learning">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="item-title">Learning</span>
+                    <span class="item-description">Educational content</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="learning-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container fashion">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <span class="item-title">Fashion & Beauty</span>
+                    <span class="item-description">Style tips and tutorials</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="fashion-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container podcasts">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <span class="item-title">Podcasts</span>
+                    <span class="item-description">Popular shows and episodes</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="podcasts-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <a href="#" class="explore-item">
+                    <div class="icon-container lifestyle">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <span class="item-title">Lifestyle</span>
+                    <span class="item-description">Life hacks and inspiration</span>
+                </a>
+                <div class="scroll-container">
+                    <div class="recommendations-wrapper" id="lifestyle-recommendations"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "NOTIFICATION DROP DOWN" option-->
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationBell = document.querySelector('.notification-bell');
+            const notificationDropdown = document.querySelector('.notification-dropdown');
+            const notificationCount = document.querySelector('.notification-count');
+            const markAsReadButton = document.querySelector('.mark-as-read');
+            const notificationItems = document.querySelectorAll('.notification-item');
+
+            let isDropdownVisible = false;
+
+            notificationBell.addEventListener('click', () => {
+                isDropdownVisible = !isDropdownVisible;
+                notificationDropdown.style.display = isDropdownVisible ? 'block' : 'none';
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInside = notificationBell.contains(event.target) || notificationDropdown.contains(event.target);
+                if (!isClickInside && isDropdownVisible) {
+                    notificationDropdown.style.display = 'none';
+                    isDropdownVisible = false;
+                }
+            });
+
+            markAsReadButton.addEventListener('click', () => {
+                notificationItems.forEach(item => {
+                    item.classList.remove('unread');
+                });
+                updateNotificationCount();
+            });
+
+            notificationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.remove('unread');
+                    updateNotificationCount();
+                });
+            });
+
+            function updateNotificationCount() {
+                const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+                notificationCount.textContent = unreadCount;
+                notificationCount.style.display = unreadCount > 0 ? 'block' : 'none';
+            }
+
+            updateNotificationCount();
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script for header "PROFILE DROP DOWN" option-->
+    <script>
+        const profileIcon = document.querySelector('.profile-icon');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Toggle dropdown on click
+        profileIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileIcon.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Handle dropdown item clicks
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = e.target.textContent.trim();
+                console.log(`Clicked: ${action}`);
+                dropdownMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+
+
+
+
+
+    <!--Script for sidebar "Scrollable explore items" option-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Configuration object for different categories
+            const categories = {
+                trending: { title: "How Brands Use Design & Marketing", channel: "Design Theory" },
+                music: { title: "Latest Hit Song - Official Music Video", channel: "Music Artist" },
+                gaming: { title: "Epic Gaming Moments Compilation", channel: "Pro Gamer" },
+                movies: { title: "New Movie Trailer 2024", channel: "Movie Studio" },
+                news: { title: "Breaking News Coverage", channel: "News Network" },
+                sports: { title: "Championship Highlights", channel: "Sports Central" },
+                learning: { title: "Understanding Complex Topics Made Easy", channel: "Education Hub" },
+                fashion: { title: "Spring Fashion Trends 2024", channel: "Style Guide" },
+                podcasts: { title: "Interesting Conversations EP.1", channel: "Podcast Host" },
+                lifestyle: { title: "Daily Life Improvement Tips", channel: "Lifestyle Guru" }
+            };
+
+            // Function to create a video recommendation
+            function createVideoRecommendation(category) {
+                const content = categories[category];
+                return `
+                    <div class="recommendation-video-container">
+                        <div class="thumbnail">
+                            <img src="/api/placeholder/400/225" alt="Video thumbnail">
+                        </div>
+                        <div class="video-info-container">
+                            <div class="top-row">
+                                <div class="video-info">
+                                    <h2 class="video-title">${content.title}</h2>
+                                    <div class="video-meta">
+                                        <div class="channel-info">
+                                            <span>${content.channel}</span>
+                                            <svg class="verified-badge" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1L7 11.8l2.8 2.7L17 7.4l1.4 1.4-8.6 8.5z"></path>
+                                            </svg>
+                                        </div>
+                                    
+                                        <span>${Math.floor(Math.random() * 10)}M views</span>
+                                        <span class="meta-separator">•</span>
+                                        <span>${Math.floor(Math.random() * 11) + 1} months ago</span>
+                                    </div>
+                                </div>
+                                <button class="menu-button" aria-label="More actions">
+                                    <svg class="menu-icon" viewBox="0 0 24 24">
+                                        <path d="M12 16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5zM10.5 12c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zm0-6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Populate all sections
+            Object.keys(categories).forEach(category => {
+                const wrapper = document.getElementById(`${category}-recommendations`);
+                for (let i = 0; i < 10; i++) {
+                    wrapper.innerHTML += createVideoRecommendation(category);
+                }
+            });
+
+            // Add smooth scrolling behavior to all containers
+            document.querySelectorAll('.scroll-container').forEach(container => {
+                container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    container.scrollLeft += e.deltaY;
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Script for "RESPONSIVE DESIGN"-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all necessary elements
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const section1 = document.querySelector('.section-1');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const searchIcon = document.querySelector('.search-icon');
+
+        const backButton = document.querySelector('.back-button');
+        const headerContent = document.querySelector('.header-content');
+
+        // Hamburger menu toggle
+        hamburgerMenu.addEventListener('click', function () {
+            this.classList.toggle('active');
+            section1.classList.toggle('expanded');
+            sidebarOverlay.classList.toggle('active');
+
+            // Prevent body scrolling when sidebar is open
+            if (section1.classList.contains('expanded')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close sidebar when clicking overlay
+        sidebarOverlay.addEventListener('click', function () {
+            hamburgerMenu.classList.remove('active');
+            section1.classList.remove('expanded');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+
+
+
+
+        // Handle window resize
+        let timeout = null;
+        window.addEventListener('resize', function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+                if (window.innerWidth > 768) {
+                    // Reset all states when returning to desktop view
+                    section1.classList.remove('expanded');
+                    hamburgerMenu.classList.remove('active');
+                    sidebarOverlay.classList.remove('active');
+
+                    document.body.style.overflow = '';
+                    Array.from(headerContent.children).forEach(el => {
+                        el.style.visibility = 'visible';
+                    });
+                }
+            }, 250);
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
