@@ -28,7 +28,6 @@
     <div class="header-content">
 
 
-
         <!-- Header Left-Section -->
         <div class="header-left-section">
             <button class="hamburger-menu" aria-label="Menu">
@@ -44,7 +43,9 @@
 
         <!-- Header Middle-Section -->
         <div class="header-middle-section">
+
             <div class="search-container">
+
                 <input type="text" class="search-box" placeholder="Search">
                 <button class="search-btn">
                     <i class="fas fa-magnifying-glass icon"></i>
@@ -55,6 +56,55 @@
 
         <!-- Header Right-Section -->
         <div class="header-right-section">
+
+
+
+
+            <button class="create-button">+</button>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Create New Post</h2>
+                    <form id="createPostForm">
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" id="thumbnail" accept="image/*">
+                            <div class="thumbnail-preview">
+                                <span>No image selected</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="playlist">Playlist (Optional)</label>
+                            <select id="playlist">
+                                <option value="">Select a playlist</option>
+                                <option value="1">My Playlist 1</option>
+                                <option value="2">My Playlist 2</option>
+                                <option value="3">My Playlist 3</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="create-post-btn">Create Post</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+
             <div class="notification-container">
                 <div class="notification-bell" id="notificationBell">
                     <i class="fas fa-bell"></i>
@@ -92,11 +142,16 @@
             </div>
 
 
+
+
             <div class="profile-container">
+
+
                 <div class="profile-icon">
                     JD
                 </div>
-                 <div class="dropdown-menu">
+
+                <div class="dropdown-menu">
                     <a href="./userprofile-page.html" class="droopdown-item">Account Profile</a>
                     <a href="./settings-page.html" class="droopdown-item">Settings</a>
                     <div class="dropdown-divider"></div>
@@ -107,6 +162,7 @@
                     <div class="dropdown-divider"></div>
                     <a href="./index.html" class="droopdown-item">Sign Out</a>
                 </div>
+
             </div>
         </div>
 
@@ -141,7 +197,7 @@
                 <div class="sidebar-bottom">
                     <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
                     <li><a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a></li>
-                
+
                 </div>
 
 
@@ -866,64 +922,85 @@
 
 
 
-<!--Script for "RESPONSIVE DESIGN"-->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get all necessary elements
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const section1 = document.querySelector('.section-1');
-        const sidebarOverlay = document.querySelector('.sidebar-overlay');
-        const searchIcon = document.querySelector('.search-icon');
+    <!--Script for "RESPONSIVE DESIGN"-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all necessary elements
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const section1 = document.querySelector('.section-1');
+            const sidebarOverlay = document.querySelector('.sidebar-overlay');
+            const searchIcon = document.querySelector('.search-icon');
+            const backButton = document.querySelector('.back-button');
+            const headerContent = document.querySelector('.header-content');
 
-        const backButton = document.querySelector('.back-button');
-        const headerContent = document.querySelector('.header-content');
-
-        // Hamburger menu toggle
-        hamburgerMenu.addEventListener('click', function () {
-            this.classList.toggle('active');
-            section1.classList.toggle('expanded');
-            sidebarOverlay.classList.toggle('active');
-
-            // Prevent body scrolling when sidebar is open
-            if (section1.classList.contains('expanded')) {
-                document.body.style.overflow = 'hidden';
-            } else {
+            // Function to close sidebar
+            function closeSidebar() {
+                console.log('Closing sidebar'); // Debug log
+                hamburgerMenu.classList.remove('active');
+                section1.classList.remove('expanded');
+                sidebarOverlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
-        });
 
-        // Close sidebar when clicking overlay
-        sidebarOverlay.addEventListener('click', function () {
-            hamburgerMenu.classList.remove('active');
-            section1.classList.remove('expanded');
-            sidebarOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+            // Function to open sidebar
+            function openSidebar() {
+                console.log('Opening sidebar'); // Debug log
+                hamburgerMenu.classList.add('active');
+                section1.classList.add('expanded');
+                sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
 
-
-
-
-
-        // Handle window resize
-        let timeout = null;
-        window.addEventListener('resize', function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(function () {
-                if (window.innerWidth > 768) {
-                    // Reset all states when returning to desktop view
-                    section1.classList.remove('expanded');
-                    hamburgerMenu.classList.remove('active');
-                    sidebarOverlay.classList.remove('active');
-
-                    document.body.style.overflow = '';
-                    Array.from(headerContent.children).forEach(el => {
-                        el.style.visibility = 'visible';
-                    });
+            // Hamburger menu toggle
+            hamburgerMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (hamburgerMenu.classList.contains('active')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
                 }
-            }, 250);
+            });
+
+            // Handle clicks on the document
+            document.addEventListener('click', function (e) {
+                // Check if sidebar is expanded and click is outside sidebar and hamburger
+                const isClickOutsideSidebar = !section1.contains(e.target);
+                const isClickOutsideHamburger = !hamburgerMenu.contains(e.target);
+                const isSidebarExpanded = section1.classList.contains('expanded');
+
+                console.log('Click detected:', { // Debug logs
+                    isClickOutsideSidebar,
+                    isClickOutsideHamburger,
+                    isSidebarExpanded
+                });
+
+                if (isSidebarExpanded && isClickOutsideSidebar && isClickOutsideHamburger) {
+                    closeSidebar();
+                }
+            });
+
+            // Close sidebar when clicking overlay
+            sidebarOverlay.addEventListener('click', function (e) {
+                e.stopPropagation();
+                closeSidebar();
+            });
+
+            // Handle window resize
+            let timeout = null;
+            window.addEventListener('resize', function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    if (window.innerWidth > 768) {
+                        // Reset all states when returning to desktop view
+                        closeSidebar();
+                        Array.from(headerContent.children).forEach(el => {
+                            el.style.visibility = 'visible';
+                        });
+                    }
+                }, 250);
+            });
         });
-    });
-</script>
+    </script>
 
 
 
