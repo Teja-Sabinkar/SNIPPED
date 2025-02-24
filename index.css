@@ -30,12 +30,13 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    width: 400px;
     height: 400px;
     margin: auto;
 }
 
 .login-title {
+    font-size: 24px;
     text-align: center;
     color: #f21818;
     margin-bottom: 1.5rem;
@@ -51,6 +52,7 @@ body {
 }
 
 label {
+    font-size: 14px;
     display: block;
     margin-bottom: 0.5rem;
     color: #606770;
@@ -58,11 +60,11 @@ label {
 
 input[type="email"],
 input[type="password"] {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #dddfe2;
-    border-radius: 6px;
-    font-size: 1rem;
+    width: 94%;
+        padding: 0.5rem;
+        border: 1px solid #dddfe2;
+        border-radius: 6px;
+        font-size: 12px;
 }
 
 .remember-me {
@@ -72,6 +74,7 @@ input[type="password"] {
 
 .remember-me input {
     margin-right: 0.5rem;
+    margin-bottom: 10px;
 }
 
 .login-button {
@@ -81,7 +84,7 @@ input[type="password"] {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
@@ -98,12 +101,12 @@ input[type="password"] {
 .forgot-password {
     color: #f21818;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 .signup-prompt {
     margin-top: 1rem;
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #606770;
 }
 
@@ -112,3 +115,96 @@ input[type="password"] {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 376px) {
+
+    .login-container {
+        background-color: #ffffff0f;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        width: 260px;
+        height: 340px;
+        margin: auto;
+    }
+
+    .login-title {
+        font-size: 24px;
+        text-align: center;
+        color: #f21818;
+        margin-bottom: 1.5rem;
+        margin-top: -7px;
+    }
+
+    label {
+        font-size: 12px;
+        
+    }
+
+    .label.email {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #606770;
+        font-size: 12px;
+    }
+
+    .input[type="email"], input[type="password"] {
+        width: 94%;
+        padding: 0.5rem;
+        border: 1px solid #dddfe2;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+
+    .login-button {
+        background: transparent;
+        color: white;
+        border: 1px solid white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .forgot-password {
+        color: #f21818;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
+    .signup-prompt {
+        margin-top: 1rem;
+        font-size: 12px;
+        color: #606770;
+    }
+
+    .signup-link {
+        font-size: 12px;
+        color: #f21818;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+}
+
