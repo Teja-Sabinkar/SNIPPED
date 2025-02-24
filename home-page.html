@@ -182,37 +182,37 @@
     <!-- SECTION-1 -->
 
     <div class="section-1">
-    
+
         <nav class="sidebar">
             <ul class="sidebar-menu">
-    
-    
+
+
                 <div class="sidebar-top">
                     <li><a href="./home-page.html"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="./explore-page.html"><i class="fas fa-compass"></i> Explore</a></li>
                     <li><a href="./recentlyviewed-page.html"><i class="fas fa-history"></i> Recently Viewed</a></li>
                     <li><a href="./subscriptions-page.html"><i class="fas fa-play-circle"></i> Subscriptions</a></li>
                 </div>
-    
+
                 <div class="sidebar-bottom">
                     <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
                     <li><a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a></li>
-    
+
                 </div>
-    
-    
-    
-    
+
+
+
+
                 <li><a href="./settings-page.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
     </div>
-    
-    
-    
+
+
+
     <div class="sidebar-overlay"></div>
-    
-    
+
+
     </div>
 
 
@@ -238,13 +238,14 @@
                 <div class="post-content">
                     <div class="post-meta">
                         <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
-                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                        <a href="#" class="user">u/honeyfacts</a> <p class="time">5 hours ago</p>
                     </div>
                     <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
                         ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
                     <p class="post-description">Scientists explain that honey's unique chemical composition - low
                         moisture content and high acidity - creates an environment where bacteria and other
                         microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                    
                     <div class="image-container">
                         <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
                             class="post-image">
@@ -276,13 +277,14 @@
                 <div class="post-content">
                     <div class="post-meta">
                         <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
-                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                        <a href="#" class="user">u/honeyfacts</a> <p class="time">5 hours ago</p>
                     </div>
                     <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
                         ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
                     <p class="post-description">Scientists explain that honey's unique chemical composition - low
                         moisture content and high acidity - creates an environment where bacteria and other
                         microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                    
                     <div class="image-container">
                         <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
                             class="post-image">
@@ -314,13 +316,14 @@
                 <div class="post-content">
                     <div class="post-meta">
                         <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
-                        <p>Posted by <a href="#" class="user">u/honeyfacts</a> 5 hours ago</p>
+                        <a href="#" class="user">u/honeyfacts</a> <p class="time">5 hours ago</p>
                     </div>
                     <h2 class="post-title">TIL that honey never spoils. Archaeologists have found pots of honey in
                         ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.</h2>
                     <p class="post-description">Scientists explain that honey's unique chemical composition - low
                         moisture content and high acidity - creates an environment where bacteria and other
                         microorganisms cannot survive, making it one of nature's only foods that never spoils.</p>
+                   
                     <div class="image-container">
                         <img src="https://via.placeholder.com/600x400?text=Honey+Jar" alt="Ancient honey jar"
                             class="post-image">
@@ -601,10 +604,11 @@
                     <div class="post-content">
                         <div class="post-meta">
                             <img src="https://via.placeholder.com/32x32" alt="User profile" class="profile-pic">
-                            <p>Posted by <a href="#" class="user">u/user123</a> just now</p>
+                            <a href="#" class="user">u/user123</a> <p class="time">5 hours ago</p>
                         </div>
                         <h2 class="post-title">${title}</h2>
                         <p class="post-description">${description}</p>
+                        
                         ${imageContainerHtml}
                         <div class="post-actions">
                             <a href="#" style="text-decoration: none; margin-right: 10px;">
@@ -770,6 +774,78 @@
 
 
 
+    <!--Script for show-more-descrption  "SHOW MORE" option-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const posts = document.querySelectorAll('.post');
+    
+    posts.forEach(post => {
+        const description = post.querySelector('.post-description');
+        const showMoreBtn = post.querySelector('.show-more-description');
+        
+        // Only proceed if both elements exist
+        if (!description || !showMoreBtn) return;
+
+        function checkTextOverflow() {
+            // Get original content height
+            const originalHeight = description.scrollHeight;
+            const lineHeight = parseFloat(window.getComputedStyle(description).lineHeight);
+            const twoLineHeight = lineHeight * 2;
+
+            // Show/hide button based on content height
+            if (originalHeight > twoLineHeight) {
+                showMoreBtn.classList.remove('hidden');
+                
+                // Initially collapse the text
+                if (!description.classList.contains('expanded')) {
+                    description.style.maxHeight = `${twoLineHeight}px`;
+                }
+            } else {
+                showMoreBtn.classList.add('hidden');
+            }
+        }
+
+        // Toggle show more/less
+        showMoreBtn.addEventListener('click', function() {
+            description.classList.toggle('expanded');
+            this.classList.toggle('expanded');
+
+            if (description.classList.contains('expanded')) {
+                // When expanding, set height to auto to show full content
+                description.style.maxHeight = 'none';
+                description.style.display = 'block';
+                description.style.webkitLineClamp = 'unset';
+            } else {
+                // When collapsing, reset to two lines
+                const lineHeight = parseFloat(window.getComputedStyle(description).lineHeight);
+                description.style.maxHeight = `${lineHeight * 2}px`;
+                description.style.display = '-webkit-box';
+                description.style.webkitLineClamp = '2';
+            }
+        });
+
+        // Initial check
+        checkTextOverflow();
+
+        // Recheck on window resize with debounce
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(checkTextOverflow, 100);
+        });
+    });
+});
+    </script>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -879,7 +955,7 @@
 
 
 
-    
+
 
 
 
@@ -896,35 +972,60 @@
             const section1 = document.querySelector('.section-1');
             const sidebarOverlay = document.querySelector('.sidebar-overlay');
             const searchIcon = document.querySelector('.search-icon');
-
             const backButton = document.querySelector('.back-button');
             const headerContent = document.querySelector('.header-content');
 
-            // Hamburger menu toggle
-            hamburgerMenu.addEventListener('click', function () {
-                this.classList.toggle('active');
-                section1.classList.toggle('expanded');
-                sidebarOverlay.classList.toggle('active');
-
-                // Prevent body scrolling when sidebar is open
-                if (section1.classList.contains('expanded')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            });
-
-            // Close sidebar when clicking overlay
-            sidebarOverlay.addEventListener('click', function () {
+            // Function to close sidebar
+            function closeSidebar() {
+                console.log('Closing sidebar'); // Debug log
                 hamburgerMenu.classList.remove('active');
                 section1.classList.remove('expanded');
                 sidebarOverlay.classList.remove('active');
                 document.body.style.overflow = '';
+            }
+
+            // Function to open sidebar
+            function openSidebar() {
+                console.log('Opening sidebar'); // Debug log
+                hamburgerMenu.classList.add('active');
+                section1.classList.add('expanded');
+                sidebarOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Hamburger menu toggle
+            hamburgerMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (hamburgerMenu.classList.contains('active')) {
+                    closeSidebar();
+                } else {
+                    openSidebar();
+                }
             });
 
+            // Handle clicks on the document
+            document.addEventListener('click', function (e) {
+                // Check if sidebar is expanded and click is outside sidebar and hamburger
+                const isClickOutsideSidebar = !section1.contains(e.target);
+                const isClickOutsideHamburger = !hamburgerMenu.contains(e.target);
+                const isSidebarExpanded = section1.classList.contains('expanded');
 
+                console.log('Click detected:', { // Debug logs
+                    isClickOutsideSidebar,
+                    isClickOutsideHamburger,
+                    isSidebarExpanded
+                });
 
+                if (isSidebarExpanded && isClickOutsideSidebar && isClickOutsideHamburger) {
+                    closeSidebar();
+                }
+            });
 
+            // Close sidebar when clicking overlay
+            sidebarOverlay.addEventListener('click', function (e) {
+                e.stopPropagation();
+                closeSidebar();
+            });
 
             // Handle window resize
             let timeout = null;
@@ -933,11 +1034,7 @@
                 timeout = setTimeout(function () {
                     if (window.innerWidth > 768) {
                         // Reset all states when returning to desktop view
-                        section1.classList.remove('expanded');
-                        hamburgerMenu.classList.remove('active');
-                        sidebarOverlay.classList.remove('active');
-
-                        document.body.style.overflow = '';
+                        closeSidebar();
                         Array.from(headerContent.children).forEach(el => {
                             el.style.visibility = 'visible';
                         });
