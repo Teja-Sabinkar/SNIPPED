@@ -1281,32 +1281,27 @@ textarea {
 
 
 
-/* STYLING FOR SECTION-2-1*/
-
+/* STYLING FOR SECTION-2-2*/
 
 .section-2-2 {
     width: 97%;
     display: flex;
     flex-direction: column;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     width: -webkit-fill-available;
 }
 
-
 .Discussion-title {
-    padding-bottom: 1rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0px 16px 12px 0px;
+    color: white;
 }
-
 
 .comment-box-container {
     margin: 0rem;
 }
-
 
 .comment-box {
     background: #ffffff08;
@@ -1316,9 +1311,8 @@ textarea {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
 .comment-box textarea {
-    font-size: 12px;
+   font-size: 12px;
     width: 97%;
     height: 50px;
     padding: 12px;
@@ -1334,124 +1328,125 @@ textarea {
 }
 
 
-.reference-button {
-    background: transparent;
-    color: rgb(248 0 0 / 80%);
-    border: 1px solid white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-
-.reference-button:hover {
-    color: white;
-    background: rgb(248 0 0 / 80%);
-}
-
-
-
-
-
-
 .submit-button {
     background: transparent;
     color: white;
     border: 1px solid white;
-    padding: 8px 16px;
+    padding: 5.5px 16px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
+    
 }
-
 
 .submit-button:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
-
 .comment-thread {
-    width: 90%;
-    margin: 0 auto;
+    padding: 16px 0 0 0;
 }
 
-
+/* Reddit-style comment structure */
 .comment {
-    overflow-y: auto;
-    margin-bottom: 16px;
-    background: #ffffff08;
-    border-radius: 8px;
-    padding: 16px 16px 4px 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
+/* Enhanced Reddit-style comment indentation with animated gradient borders */
+.nested-comments {
+    margin-left: 20px;
+    position: relative;
+    padding-left: 16px;
+    overflow: hidden;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pseudo-element for the border */
+.nested-comments::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0.5px;
+    background-color: #8b8b8b;
+    border-radius: 3px;
+    transition: background-color 0.2s ease, width 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for all comment lines */
+
+
+/* Sequential colors for nested comment lines with enhanced styling */
+.level-1::before {
+    background-color: #787c7e;
+    box-shadow: 0 0 0 rgba(36, 160, 237, 0);
+}
+.level-1:hover::before {
+    box-shadow: 0 0 8px rgba(36, 160, 237, 0.4);
+}
+
+.level-2::before {
+    background-color: 6c757d;
+    box-shadow: 0 0 0 rgba(255, 69, 0, 0);
+}
+.level-2:hover::before {
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.4);
+}
+
+.level-3::before {
+    background-color: #5f6b73;
+    box-shadow: 0 0 0 rgba(108, 198, 68, 0);
+}
+.level-3:hover::before {
+    box-shadow: 0 0 8px rgba(108, 198, 68, 0.4);
+}
+
+.level-4::before {
+    background-color: #526068;
+    box-shadow: 0 0 0 rgba(255, 135, 23, 0);
+}
+.level-4:hover::before {
+    box-shadow: 0 0 8px rgba(255, 135, 23, 0.4);
+}
+
+.level-5::before {
+    background-color: #45545e;
+    box-shadow: 0 0 0 rgba(137, 87, 229, 0);
+}
+.level-5:hover::before {
+    box-shadow: 0 0 8px rgba(137, 87, 229, 0.4);
+}
+
+.nested-comments.collapsed {
+    height: 0;
+}
 
 .comment-header {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 10px;
-    /* Add padding to accommodate collapse button */
-}
-
-
-.collapse-button {
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
+    font-size: 12px;
+    margin-bottom: 4px;
     color: #787c7e;
-    display: none;
-    /* Hidden by default */
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    padding: 0;
-    transition: transform 0.2s ease;
+    position: relative;  /* For proper positioning of avatar when collapse button is hidden */
 }
-
-
-.comment.has-nested>.comment-header .collapse-button {
-    display: flex;
-}
-
-
-.has-replies .collapse-button {
-    display: flex;
-    /* Show only when comment has replies */
-}
-
-
-.collapse-button:hover {
-    color: #1a1a1b;
-}
-
-
-.collapse-button.collapsed {
-    transform: translateY(-50%) rotate(-45deg);
-}
-
 
 .avatar {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background-color: #ddd;
-    margin-right: 8px;
     overflow: hidden;
-    flex-shrink: 0;
-    border: 1px solid #e6e6e6;
+    margin-right: 6px;
 }
 
+/* When collapse button is not shown, align avatar properly */
+.comment:not(.has-nested) .avatar {
+    margin-left: 22px; /* Same as collapse button width + margin */
+}
 
 .avatar img {
     width: 100%;
@@ -1459,176 +1454,215 @@ textarea {
     object-fit: cover;
 }
 
-
 .username {
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 500;
     color: white;
-    margin-right: 8px;
-    font-size: 0.9rem;
+    margin-right: 6px;
 }
-
 
 .timestamp {
+    font-size: 10px;
     color: #787c7e;
-    font-size: 0.6rem;
 }
-
 
 .comment-content {
     font-size: 12px;
-    overflow-wrap: break-word;
+    margin: 4px 0;
     color: white;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    word-wrap: break-word;
+    padding-left: 30px;
 }
-
 
 .comment-actions {
     display: flex;
-    align-items: center;
-    gap: 16px;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding-left: 30px;
 }
-
 
 .action-button {
     display: flex;
     align-items: center;
-    gap: 4px;
     background: none;
     border: none;
-    color: #787c7e;
+    font-size: 10px;
+    font-weight: 700;
+    color: #878a8c;
     cursor: pointer;
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 4px;
+    border-radius: 2px;
 }
-
 
 .action-button:hover {
-    background-color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
+.action-button svg {
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Enhanced interactive collapse button with proper initial state */
+.collapse-button {
+    border: none;
+    margin-right: 6px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Button background effect */
+.collapse-button::before {
+    margin-left: 0.5px;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    background-color: transparent;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    border: 1px solid white;
+}
+
+.collapse-button:hover::before {
+    transform: scale(1);
+}
+
+.collapse-button:active::before {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Animated collapse icon - default is minus (-) */
+.collapse-icon {
+    width: 10px;
+    height: 10px;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.collapse-icon::before, 
+.collapse-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #878a8c;
+    border-radius: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Horizontal line */
+.collapse-icon::before {
+    width: 10px;
+    height: 2px;
+    top: 4px;
+    left: -0.5px;
+}
+
+/* Vertical line that appears when collapsed (plus sign) */
+.collapse-icon::after {
+    width: 2px;
+    height: 10px;
+    top: 0;
+    left: 3.5px;
+    opacity: 0; /* Hidden by default (making it a minus sign) */
+}
+
+/* Animation for collapse/expand - change to plus when collapsed */
+.collapse-button.collapsed .collapse-icon::after {
+    opacity: 1; /* Show vertical line when collapsed (plus sign) */
+}
+
+/* Special styling for comments with children */
+.has-nested > .comment-header > .collapse-button {
+    background-color: rgb(114 114 114 / 25%);
+}
+
+.has-nested > .comment-header > .collapse-button:hover {
+    background-color: rgb(114 114 114 / 25%);
+}
+
+.has-nested > .comment-header > .collapse-button .collapse-icon::before,
+.has-nested > .comment-header > .collapse-button .collapse-icon::after {
+    background-color: #787878;
+}
+
+/* Special styling for comments with children */
+.has-nested > .comment-header > .collapse-button {
+    background-color: rgb(114 114 114 / 25%);
+}
+
+.has-nested > .comment-header > .collapse-button:hover {
+    background-color: rgb(114 114 114 / 25%);
+}
+
+.has-nested > .comment-header > .collapse-button .collapse-icon::before,
+.has-nested > .comment-header > .collapse-button .collapse-icon::after {
+    background-color: #787878;
+}
+
+.like-count {
+    margin-left: 2px;
+}
 
 .action-button.liked {
     color: #ff4500;
 }
 
-
-.nested-comments {
-    margin-left: 10px;
-    border-left: 1px solid #787c7e;
-    border-bottom: 1px solid #787c7e;
-    padding-left: 10px;
-    transition: height 0.3s ease, opacity 0.3s ease;
-    overflow: hidden;
+.action-button.liked svg {
+    stroke: #ff4500;
+    fill: #ff4500;
 }
 
-
-.nested-comments .comment {
-    background: none;
-    /* Remove background for nested comments */
+/* Search highlight styles */
+.search-highlight {
+    background-color: #fff2ac;
+    padding: 0 2px;
+    border-radius: 2px;
 }
 
-
-.nested-comments.level-1 {
-    border-left-color: #787c7e;
-    border-bottom-color: #787c7e;
+.search-match {
+    background-color: rgb(255 69 0 / 9%);
 }
 
-
-.nested-comments.level-2 {
-    border-left-color: #6c757d;
-    border-bottom-color: #6c757d;
+.parent-match {
+    border-left: 3px solid #ff4500 !important;
 }
 
-
-.nested-comments.level-3 {
-    border-left-color: #5f6b73;
-    border-bottom-color: #5f6b73;
-}
-
-
-.nested-comments.level-4 {
-    border-left-color: #526068;
-    border-bottom-color: #526068;
-}
-
-
-.nested-comments.level-5 {
-    border-left-color: #45545e;
-    border-bottom-color: #45545e;
-}
-
-
-.nested-comments.level-6 {
-    border-left-color: #384954;
-    border-bottom-color: #384954;
-}
-
-
-.nested-comments.level-7 {
-    border-left-color: #2b3d4a;
-    border-bottom-color: #2b3d4a;
-}
-
-
-.nested-comments.level-8 {
-    border-left-color: #1e3140;
-    border-bottom-color: transparent;
-}
-
-
-.nested-comments.collapsed {
-    height: 0 !important;
-    opacity: 0;
-}
-
-
-.collapse-icon {
+.reference-button {
+    background-color: #ff4500;
     color: white;
-    position: relative;
-    width: 12px;
-    height: 12px;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
 }
 
-
-.collapse-icon::before,
-.collapse-icon::after {
-    content: '';
-    position: absolute;
-    background-color: currentColor;
-    transition: transform 0.2s ease;
+.max-depth .nested-comments {
+    border-left-color: #ffa500;
 }
 
-
-.collapse-icon::before {
-    width: 12px;
-    height: 2px;
-    top: 5px;
-    left: 0;
+/* Comment has children indicator */
+.has-nested > .comment-header > .collapse-button {
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
-
-.collapse-icon::after {
-    width: 2px;
-    height: 12px;
-    left: 5px;
-    top: 0;
-}
-
-
-.collapsed .collapse-icon::after {
-    transform: rotate(90deg);
-}
-
-
-@media (max-width: 768px) {
-    .nested-comments {
-        margin-left: 16px;
-        padding-left: 12px;
-    }
-
-}
 
 
 
@@ -3033,9 +3067,43 @@ textarea {
     }
 
     .collapse-button{
-        width: 10px;
-    height: 10px;
+        top: -0.5px;
+        width: 14px;
+    height: 14px;
     }
+
+    .nested-comments{
+        margin-left: 5px;
+        padding-left: 5px; 
+    }
+
+    .avatar {
+        width: 18px;
+    height: 18px;
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+
+    .action-button{
+        font-size: 8px;
+    }
+
+    .collapse-icon::before {
+        width: 7px;
+        height: 0.5px;
+        top: 4px;
+        left: -3.05px;
+    }
+
+    .collapse-icon::after {
+        width: 0.5px;
+        height: 7px;
+        top: 1.1px;
+        left: 0.25px;
+        opacity: 0; /* Hidden by default (making it a minus sign) */
+    }
+
+
 
 
 
