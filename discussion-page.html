@@ -873,8 +873,13 @@
         }
 
         @media (max-width: 768px) {
-    .sidebar {
+    #sidebar {
         width: 70px;
+    }
+
+    @media (max-width: 376px) {
+    #sidebar {
+        top: 44px;
     }
 
     .sidebar-header h2 {
@@ -1280,7 +1285,13 @@
 
 
     <!--Script for "COMMENT BOX" resizing-->
+   
+    <!--Script for "DISCUSSION THREADS" and its comment box resizing-->
+    
+    <!--Script for searching the  "DISCUSSION THREADS" from "COMMENT BOX"-->
+
     <script>
+        // Textarea auto-resize functionality
         document.addEventListener('DOMContentLoaded', function () {
             const textarea = document.querySelector('.comment-box textarea');
             const submitButton = document.querySelector('.comment-box button');
@@ -1338,29 +1349,20 @@
             submitComment();
             console.log("Height after submitting:", textarea.style.height);
         });
-    </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--Script for "DISCUSSION THREADS" and its comment box resizing-->
-    <script>
+        // Comment functionality
         const MAX_NESTING_LEVEL = 6;
 
         function formatTimestamp(date) {
-            // Previous timestamp formatting code remains the same
+            const now = new Date();
+            const diff = Math.floor((now - date) / 1000); // difference in seconds
+            
+            if (diff < 60) return diff + ' seconds ago';
+            if (diff < 3600) return Math.floor(diff / 60) + ' minutes ago';
+            if (diff < 86400) return Math.floor(diff / 3600) + ' hours ago';
+            if (diff < 2592000) return Math.floor(diff / 86400) + ' days ago';
+            if (diff < 31536000) return Math.floor(diff / 2592000) + ' months ago';
+            return Math.floor(diff / 31536000) + ' years ago';
         }
 
         function createCommentElement(text, isReply = false, nestingLevel = 0) {
@@ -1373,29 +1375,29 @@
             }
 
             const commentHTML = `
-            <div class="comment-header">
-                <button class="collapse-button" onclick="toggleCollapse(this)">
-                    <div class="collapse-icon"></div>
-                </button>
-                <div class="avatar">
-                    <img src="https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}" alt="user avatar">
+                <div class="comment-header">
+                    <button class="collapse-button" style="display: none;" onclick="toggleCollapse(this)">
+                        <div class="collapse-icon"></div>
+                    </button>
+                    <div class="avatar">
+                        <img src="/api/placeholder/24/24" alt="user avatar">
+                    </div>
+                    <span class="username">User${Math.floor(Math.random() * 1000)}</span>
+                    <span class="timestamp">${formatTimestamp(new Date())}</span>
                 </div>
-                <span class="username">User${Math.floor(Math.random() * 1000)}</span>
-                <span class="timestamp">${formatTimestamp(new Date())}</span>
-            </div>
-            <div class="comment-content">${text}</div>
-            <div class="comment-actions">
-                <button class="action-button" onclick="toggleLike(this)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-                    </svg>
-                    <span class="like-count">0</span>
-                </button>
-                <button class="action-button" onclick="showReplyBox(this)">Reply</button>
-                <button class="action-button">Share</button>
-            </div>
-            <div class="nested-comments${nestingLevel > 0 ? ` level-${nestingLevel}` : ''}"></div>
-        `;
+                <div class="comment-content">${text}</div>
+                <div class="comment-actions">
+                    <button class="action-button" onclick="toggleLike(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                        <span class="like-count">0</span>
+                    </button>
+                    <button class="action-button" onclick="showReplyBox(this)">Reply</button>
+                    <button class="action-button">Share</button>
+                </div>
+                <div class="nested-comments${nestingLevel > 0 ? ` level-${nestingLevel}` : ''}"></div>
+            `;
 
             comment.innerHTML = commentHTML;
             return comment;
@@ -1413,21 +1415,27 @@
 
         function updateCollapseButtons(comment) {
             const nestedComments = comment.querySelector('.nested-comments');
+            const collapseButton = comment.querySelector('.collapse-button');
+            
             if (nestedComments && nestedComments.children.length > 0) {
+                // Show collapse button and add has-nested class only if there are nested comments
                 comment.classList.add('has-nested');
-
+                if (collapseButton) {
+                    collapseButton.style.display = 'flex';
+                }
+                
+                // Update nested comments recursively
                 Array.from(nestedComments.children).forEach(nestedComment => {
                     if (nestedComment.classList.contains('comment')) {
-                        const subNestedComments = nestedComment.querySelector('.nested-comments');
-                        if (subNestedComments && subNestedComments.children.length > 0) {
-                            nestedComment.classList.add('has-nested');
-                        } else {
-                            nestedComment.classList.remove('has-nested');
-                        }
+                        updateCollapseButtons(nestedComment);
                     }
                 });
             } else {
+                // Hide collapse button and remove has-nested class if no nested comments
                 comment.classList.remove('has-nested');
+                if (collapseButton) {
+                    collapseButton.style.display = 'none';
+                }
             }
         }
 
@@ -1446,18 +1454,54 @@
         function toggleCollapse(button) {
             const comment = button.closest('.comment');
             const nestedComments = comment.querySelector('.nested-comments');
+            
+            // Add a small animation delay for the button
+            button.style.pointerEvents = 'none'; // Prevent multiple clicks
+            
+            // Toggle the collapsed class with animation
             button.classList.toggle('collapsed');
-
+            
             if (nestedComments) {
-                nestedComments.classList.toggle('collapsed');
-
                 if (!nestedComments.classList.contains('collapsed')) {
+                    // Collapsing
+                    const currentHeight = nestedComments.scrollHeight;
+                    nestedComments.style.height = currentHeight + 'px';
+                    
+                    // Force a reflow
+                    nestedComments.offsetHeight;
+                    
+                    nestedComments.classList.add('collapsed');
+                    nestedComments.style.height = '0';
+                } else {
+                    // Expanding
+                    nestedComments.classList.remove('collapsed');
                     nestedComments.style.height = 'auto';
                     const height = nestedComments.scrollHeight;
-                    nestedComments.style.height = height + 'px';
-                } else {
+                    
+                    // First set height to 0 then animate to full height
                     nestedComments.style.height = '0';
+                    
+                    // Force a reflow
+                    nestedComments.offsetHeight;
+                    
+                    nestedComments.style.height = height + 'px';
                 }
+                
+                // Add a transition end event to clean up
+                const transitionEndHandler = () => {
+                    if (!nestedComments.classList.contains('collapsed')) {
+                        nestedComments.style.height = 'auto';
+                    }
+                    button.style.pointerEvents = 'auto'; // Re-enable button
+                    nestedComments.removeEventListener('transitionend', transitionEndHandler);
+                };
+                
+                nestedComments.addEventListener('transitionend', transitionEndHandler);
+            } else {
+                // If no nested comments, just re-enable the button after animation
+                setTimeout(() => {
+                    button.style.pointerEvents = 'auto';
+                }, 300);
             }
         }
 
@@ -1465,7 +1509,7 @@
             button.classList.toggle('liked');
             const likeCount = button.querySelector('.like-count');
             const currentLikes = parseInt(likeCount.textContent);
-            likeCount.textContent = button.classList.contains('liked') ? currentLikes + 1 : currentLikes - 1;
+            likeCount.textContent = button.classList.contains('liked') ? currentLikes + 1 : Math.max(0, currentLikes - 1);
         }
 
         function showReplyBox(button) {
@@ -1491,11 +1535,23 @@
             const replyBox = document.createElement('div');
             replyBox.className = 'comment-box';
             replyBox.innerHTML = `
-            <textarea placeholder="Write a reply..."></textarea>
-            <button class="submit-button" onclick="submitReply(this)">Reply</button>
-        `;
+                <textarea placeholder="Write a reply..."></textarea>
+                <button class="submit-button" onclick="submitReply(this)">Reply</button>
+            `;
 
             nestedComments.insertBefore(replyBox, nestedComments.firstChild);
+            
+            // Auto-resize functionality for reply box
+            const replyTextarea = replyBox.querySelector('textarea');
+            replyTextarea.style.resize = 'none';
+            replyTextarea.style.transition = 'height 0.2s ease-in-out';
+            replyTextarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+            
+            // Focus the textarea
+            replyTextarea.focus();
         }
 
         function submitReply(button) {
@@ -1515,33 +1571,20 @@
 
             // Update collapse buttons for both the parent comment and the new reply
             updateCollapseButtons(parentComment);
-            updateCollapseButtons(newReply);
+            
+            // Make sure the parent comment's collapse button is visible
+            const parentCollapseButton = parentComment.querySelector('.collapse-button');
+            if (parentCollapseButton) {
+                parentCollapseButton.style.display = 'flex';
+            }
 
             // Expand the parent comment's nested comments section if collapsed
-            const parentCollapseButton = parentComment.querySelector('.collapse-button');
             if (parentCollapseButton && parentCollapseButton.classList.contains('collapsed')) {
                 toggleCollapse(parentCollapseButton);
             }
         }
-    </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--Script for searching the  "DISCUSSION THREADS" from "COMMENT BOX"-->
-    <script>
-
+        // Search functionality
         document.addEventListener('DOMContentLoaded', function () {
             const textarea = document.querySelector('.comment-box textarea');
             let currentMatchingComments = [];
@@ -1675,50 +1718,116 @@
                 moveCommentsToTop(matchingComments);
             }
 
-            // Add corresponding CSS
-            const style = document.createElement('style');
-            style.textContent = `
-        .search-match {
-            border-left: 3px solid #ffd700 !important;
-            background-color: rgb(87 35 35 / 48%) !important;
-        }
-        .parent-match {
-            border-left: 3px solid #ffd700 !important;
-        }
-        .search-highlight {
-            background-color: #ffd700;
-            padding: 2px;
-            border-radius: 2px;
-        }
-    `;
-            document.head.appendChild(style);
+            if (textarea) {
+                textarea.addEventListener('input', function () {
+                    const searchTerm = this.value.trim();
+                    if (searchTerm.length > 2) {
+                        currentMatchingComments = performCommentSearch(searchTerm);
+                        createReferenceButton(currentMatchingComments);
+                    } else {
+                        const allComments = document.getElementById('commentThread').querySelectorAll('.comment');
+                        allComments.forEach(comment => {
+                            comment.classList.remove('search-match');
+                            comment.classList.remove('parent-match');
+                            const content = comment.querySelector('.comment-content');
+                            if (content) {
+                                content.innerHTML = content.innerHTML.replace(/<mark class="search-highlight">(.*?)<\/mark>/g, '$1');
+                            }
+                        });
 
-            textarea.addEventListener('input', function () {
-                const searchTerm = this.value.trim();
-                if (searchTerm.length > 2) {
-                    currentMatchingComments = performCommentSearch(searchTerm);
-                    createReferenceButton(currentMatchingComments);
-                } else {
-                    const allComments = document.getElementById('commentThread').querySelectorAll('.comment');
-                    allComments.forEach(comment => {
-                        comment.classList.remove('search-match');
-                        comment.classList.remove('parent-match');
-                        const content = comment.querySelector('.comment-content');
-                        if (content) {
-                            content.innerHTML = content.innerHTML.replace(/<mark class="search-highlight">(.*?)<\/mark>/g, '$1');
-                        }
-                    });
+                        const existingRefButton = document.querySelector('.reference-button');
+                        if (existingRefButton) existingRefButton.remove();
 
-                    const existingRefButton = document.querySelector('.reference-button');
-                    if (existingRefButton) existingRefButton.remove();
-
-                    // Restore original order when search field is cleared
-                    restoreOriginalOrder();
-                }
-            });
+                        // Restore original order when search field is cleared
+                        restoreOriginalOrder();
+                    }
+                });
+            }
         });
 
+        // Add some sample comments to demonstrate functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some sample comments to demonstrate the functionality
+            // Sample data
+            const sampleComments = [
+                {
+                    text: "This is a really interesting discussion. I'd love to hear more perspectives on this topic.",
+                    replies: [
+                        {
+                            text: "I agree! I think there are several angles we haven't explored yet.",
+                            replies: [
+                                {
+                                    text: "Like what? I'm curious about what aspects you think we're missing.",
+                                    replies: [
+                                        {
+                                            text: "Well, for one, we haven't discussed the environmental impact.",
+                                            replies: [
+                                                {
+                                                    text: "That's a great point. The environmental considerations are crucial here.",
+                                                    replies: []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            text: "I have a different take on this. I think we should consider the economic factors more carefully.",
+                            replies: []
+                        }
+                    ]
+                },
+                {
+                    text: "Has anyone here actually tried implementing this approach in practice? I'm curious about real-world results.",
+                    replies: [
+                        {
+                            text: "Yes, we tried something similar last year. The results were promising but there were some challenges.",
+                            replies: []
+                        }
+                    ]
+                },
+                {
+                    text: "I'm not sure I understand the main concept here. Could someone explain it more simply?",
+                    replies: []
+                }
+            ];
+
+            function addCommentWithReplies(comment, container, level = 0) {
+                const commentElement = createCommentElement(comment.text, level > 0, level);
+                container.appendChild(commentElement);
+                
+                if (comment.replies.length > 0) {
+                    const nestedContainer = commentElement.querySelector('.nested-comments');
+                    comment.replies.forEach(reply => {
+                        addCommentWithReplies(reply, nestedContainer, level + 1);
+                    });
+                }
+                
+                updateCollapseButtons(commentElement);
+            }
+
+            const commentThread = document.getElementById('commentThread');
+            sampleComments.forEach(comment => {
+                addCommentWithReplies(comment, commentThread);
+            });
+        });
     </script>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
