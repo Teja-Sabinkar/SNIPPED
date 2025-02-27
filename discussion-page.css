@@ -1507,7 +1507,7 @@ textarea {
 
 /* Enhanced interactive collapse button with proper initial state */
 .collapse-button {
-    border: none;
+    border: 1px solid #787878;
     margin-right: 6px;
     background: none;
     cursor: pointer;
@@ -1779,6 +1779,7 @@ textarea {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
